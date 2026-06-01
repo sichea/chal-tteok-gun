@@ -111,7 +111,7 @@ export default function EncyclopediaScreen({ onBack }) {
               <img 
                 src={`/assets/characters/${role.character}.png`} 
                 alt={role.name}
-                style={{ width: '85%', height: '85%', objectFit: 'contain', mixBlendMode: 'multiply', ...getAvatarStyle(role.character) }}
+                style={{ width: '85%', height: '85%', objectFit: 'contain', ...getAvatarStyle(role.character) }}
                 onError={(e) => {
                   e.target.src = "https://images.unsplash.com/photo-1607604276583-eef5d076aa5f?w=60&auto=format&fit=crop&q=60";
                 }}
@@ -180,7 +180,7 @@ export default function EncyclopediaScreen({ onBack }) {
                 src={`/assets/characters/${selectedRole.character}.png`} 
                 alt={selectedRole.name} 
                 className="avatar-image"
-                style={{ mixBlendMode: 'multiply', ...getAvatarStyle(selectedRole.character) }}
+                style={getAvatarStyle(selectedRole.character)}
                 onError={(e) => {
                   e.target.src = "https://images.unsplash.com/photo-1607604276583-eef5d076aa5f?w=100&auto=format&fit=crop&q=60";
                 }}
