@@ -4,11 +4,11 @@ import html2canvas from 'html2canvas';
 import { GoogleGenerativeAI } from '@google/generative-ai';
 
 const getAvatarStyle = (character) => {
-  if (character === 'infantry_marine') {
+  if (character && character.includes('marine')) {
+    if (character.includes('recon')) {
+      return { filter: 'drop-shadow(0 4px 8px rgba(0, 0, 0, 0.5)) hue-rotate(190deg) saturate(1.2) brightness(0.9)' };
+    }
     return { filter: 'drop-shadow(0 4px 8px rgba(0, 0, 0, 0.5)) hue-rotate(325deg) saturate(1.3) contrast(1.1)' };
-  }
-  if (character === 'recon_marine') {
-    return { filter: 'drop-shadow(0 4px 8px rgba(0, 0, 0, 0.5)) hue-rotate(190deg) saturate(1.2) brightness(0.9)' };
   }
   return {};
 };
