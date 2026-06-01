@@ -1,0 +1,53 @@
+name: Daily 128 Character Auto Generator
+
+on:
+  schedule:
+    # Run every day at 18:00 UTC (03:00 AM KST)
+    - cron: '0 18 * * *'
+  workflow_dispatch:
+    inputs:
+      day:
+        description: 'Day batch index (1 to 7)'
+        required: true
+        default: '1'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+      with:
+        fetch-depth: 0
+
+    - name: Setup Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: 22
+
+    - name: Install dependencies
+      run: npm install @google/generative-ai
+
+    - name: Determine Day Index
+      id: day_index
+      run: |
+        if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
+          echo "day=${{ github.event.inputs.day }}" >> $GITHUB_OUTPUT
+        else
+          # Calculate current day of the week (1=Monday, 7=Sunday)
+          DAY_OF_WEEK=$(date +%u)
+          echo "day=$DAY_OF_WEEK" >> $GITHUB_OUTPUT
+        fi
+
+    - name: Run character generation script
+      env:
+        GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+      run: node scratch/generate_unique_characters.cjs ${{ steps.day_index.outputs.day }}
+
+    - name: Commit and Push changes
+      run: |
+        git config --global user.name "github-actions[bot]"
+        git config --global user.email "github-actions[bot]@users.noreply.github.com"
+        git add public/assets/characters/
+        git diff-index --quiet HEAD || (git commit -m "chore: 자동화 스케줄 기반 캐릭터 에셋 업데이트 [Day ${{ steps.day_index.outputs.day }}]" && git push)
