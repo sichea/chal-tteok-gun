@@ -392,7 +392,7 @@ export default function ResultScreen({ surveyData, onReset }) {
             src={`/assets/characters/${currentRole.character}.png`} 
             alt={currentRole.name} 
             className="avatar-image"
-            style={getAvatarStyle(currentRole.character)}
+            style={{ mixBlendMode: 'color-burn', ...getAvatarStyle(currentRole.character) }}
             onError={(e) => {
               e.target.src = "https://images.unsplash.com/photo-1607604276583-eef5d076aa5f?w=120&auto=format&fit=crop&q=60";
             }}

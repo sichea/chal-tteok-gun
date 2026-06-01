@@ -1,0 +1,770 @@
+[
+  {
+    "id": "army-infantry",
+    "name": "소총수",
+    "branch": "육군",
+    "character": "army-infantry"
+  },
+  {
+    "id": "army-artillery",
+    "name": "포병",
+    "branch": "육군",
+    "character": "army-artillery"
+  },
+  {
+    "id": "army-engineer",
+    "name": "공병",
+    "branch": "육군",
+    "character": "army-engineer"
+  },
+  {
+    "id": "army-mp",
+    "name": "군사경찰",
+    "branch": "육군",
+    "character": "army-mp"
+  },
+  {
+    "id": "army-cbrn",
+    "name": "화학병",
+    "branch": "육군",
+    "character": "army-cbrn"
+  },
+  {
+    "id": "army-admin",
+    "name": "행정병",
+    "branch": "육군",
+    "character": "army-admin"
+  },
+  {
+    "id": "army-tank",
+    "name": "전차승무병",
+    "branch": "육군",
+    "character": "army-tank"
+  },
+  {
+    "id": "army-apc",
+    "name": "장갑차승무병",
+    "branch": "육군",
+    "character": "army-apc"
+  },
+  {
+    "id": "army-info-operator",
+    "name": "정보기기운용병",
+    "branch": "육군",
+    "character": "army-info-operator"
+  },
+  {
+    "id": "army-transport-mechanic",
+    "name": "수송기계정비병",
+    "branch": "육군",
+    "character": "army-transport-mechanic"
+  },
+  {
+    "id": "army-weapon-maintenance",
+    "name": "화기정비병",
+    "branch": "육군",
+    "character": "army-weapon-maintenance"
+  },
+  {
+    "id": "army-supply-clerk",
+    "name": "보급행정병",
+    "branch": "육군",
+    "character": "army-supply-clerk"
+  },
+  {
+    "id": "army-ip",
+    "name": "지식재산관리병",
+    "branch": "육군",
+    "character": "army-ip"
+  },
+  {
+    "id": "army-instructor",
+    "name": "훈련소조교병",
+    "branch": "육군",
+    "character": "army-instructor"
+  },
+  {
+    "id": "army-remains",
+    "name": "유해발굴감식병",
+    "branch": "육군",
+    "character": "army-remains"
+  },
+  {
+    "id": "army-remains-record",
+    "name": "유해발굴기록병",
+    "branch": "육군",
+    "character": "army-remains-record"
+  },
+  {
+    "id": "army-honor-guard",
+    "name": "의장병",
+    "branch": "육군",
+    "character": "army-honor-guard"
+  },
+  {
+    "id": "army-recon",
+    "name": "특전병",
+    "branch": "육군",
+    "character": "army-recon"
+  },
+  {
+    "id": "army-analysis",
+    "name": "탐지분석병",
+    "branch": "육군",
+    "character": "army-analysis"
+  },
+  {
+    "id": "army-sdt",
+    "name": "특임군사경찰",
+    "branch": "육군",
+    "character": "army-sdt"
+  },
+  {
+    "id": "army-mc-mp",
+    "name": "MC군사경찰",
+    "branch": "육군",
+    "character": "army-mc-mp"
+  },
+  {
+    "id": "army-guard-33",
+    "name": "33경호병",
+    "branch": "육군",
+    "character": "army-guard-33"
+  },
+  {
+    "id": "army-religion",
+    "name": "군종병기독교/천주교/불교",
+    "branch": "육군",
+    "character": "army-religion"
+  },
+  {
+    "id": "army-band",
+    "name": "군악병",
+    "branch": "육군",
+    "character": "army-band"
+  },
+  {
+    "id": "army-cost-analyst",
+    "name": "회계원가비용분석병",
+    "branch": "육군",
+    "character": "army-cost-analyst"
+  },
+  {
+    "id": "army-cbrn-lab",
+    "name": "화생방연구보조병",
+    "branch": "육군",
+    "character": "army-cbrn-lab"
+  },
+  {
+    "id": "army-cyber",
+    "name": "정보보호병",
+    "branch": "육군",
+    "character": "army-cyber"
+  },
+  {
+    "id": "army-sig-int",
+    "name": "신호정보/전자전운용",
+    "branch": "육군",
+    "character": "army-sig-int"
+  },
+  {
+    "id": "army-sw-dev",
+    "name": "S/W개발병",
+    "branch": "육군",
+    "character": "army-sw-dev"
+  },
+  {
+    "id": "army-drone",
+    "name": "드론운용및정비병",
+    "branch": "육군",
+    "character": "army-drone"
+  },
+  {
+    "id": "army-designer-video",
+    "name": "영상콘텐츠디자이너",
+    "branch": "육군",
+    "character": "army-designer-video"
+  },
+  {
+    "id": "army-designer-graphic",
+    "name": "그래픽디자이너",
+    "branch": "육군",
+    "character": "army-designer-graphic"
+  },
+  {
+    "id": "army-designer-photo",
+    "name": "사진콘텐츠디자이너",
+    "branch": "육군",
+    "character": "army-designer-photo"
+  },
+  {
+    "id": "army-military-science",
+    "name": "군사과학기술병",
+    "branch": "육군",
+    "character": "army-military-science"
+  },
+  {
+    "id": "army-jsa",
+    "name": "JSA경비병",
+    "branch": "육군",
+    "character": "army-jsa"
+  },
+  {
+    "id": "army-sports",
+    "name": "국군체육특기병",
+    "branch": "육군",
+    "character": "army-sports"
+  },
+  {
+    "id": "army-cyber-ops",
+    "name": "사이버작전병",
+    "branch": "육군",
+    "character": "army-cyber-ops"
+  },
+  {
+    "id": "army-linguist",
+    "name": "어학병",
+    "branch": "육군",
+    "character": "army-linguist"
+  },
+  {
+    "id": "navy-sailor",
+    "name": "갑판병",
+    "branch": "해군",
+    "character": "navy-sailor"
+  },
+  {
+    "id": "navy-sonar",
+    "name": "음탐병",
+    "branch": "해군",
+    "character": "navy-sonar"
+  },
+  {
+    "id": "navy-radar",
+    "name": "전탐병",
+    "branch": "해군",
+    "character": "navy-radar"
+  },
+  {
+    "id": "navy-engine",
+    "name": "추기병",
+    "branch": "해군",
+    "character": "navy-engine"
+  },
+  {
+    "id": "navy-steer",
+    "name": "조타병",
+    "branch": "해군",
+    "character": "navy-steer"
+  },
+  {
+    "id": "navy-supply",
+    "name": "보급병",
+    "branch": "해군",
+    "character": "navy-supply"
+  },
+  {
+    "id": "navy-electric",
+    "name": "전기병",
+    "branch": "해군",
+    "character": "navy-electric"
+  },
+  {
+    "id": "navy-ordnance",
+    "name": "병기병",
+    "branch": "해군",
+    "character": "navy-ordnance"
+  },
+  {
+    "id": "navy-navigator",
+    "name": "조타행정병",
+    "branch": "해군",
+    "character": "navy-navigator"
+  },
+  {
+    "id": "navy-mp",
+    "name": "군사경찰",
+    "branch": "해군",
+    "character": "navy-mp"
+  },
+  {
+    "id": "navy-band",
+    "name": "군악병",
+    "branch": "해군",
+    "character": "navy-band"
+  },
+  {
+    "id": "navy-pr",
+    "name": "문화홍보병",
+    "branch": "해군",
+    "character": "navy-pr"
+  },
+  {
+    "id": "navy-udt",
+    "name": "특전병",
+    "branch": "해군",
+    "character": "navy-udt"
+  },
+  {
+    "id": "navy-ssu",
+    "name": "심해잠수병",
+    "branch": "해군",
+    "character": "navy-ssu"
+  },
+  {
+    "id": "navy-interpreter",
+    "name": "통번역병",
+    "branch": "해군",
+    "character": "navy-interpreter"
+  },
+  {
+    "id": "navy-linguist",
+    "name": "어학병",
+    "branch": "해군",
+    "character": "navy-linguist"
+  },
+  {
+    "id": "navy-special-intel",
+    "name": "전문정보병",
+    "branch": "해군",
+    "character": "navy-special-intel"
+  },
+  {
+    "id": "navy-religion",
+    "name": "군종병",
+    "branch": "해군",
+    "character": "navy-religion"
+  },
+  {
+    "id": "navy-ip",
+    "name": "지식재산관리병",
+    "branch": "해군",
+    "character": "navy-ip"
+  },
+  {
+    "id": "navy-cyber",
+    "name": "정보보호병",
+    "branch": "해군",
+    "character": "navy-cyber"
+  },
+  {
+    "id": "navy-cbt",
+    "name": "CBT병",
+    "branch": "해군",
+    "character": "navy-cbt"
+  },
+  {
+    "id": "navy-ai",
+    "name": "AI병",
+    "branch": "해군",
+    "character": "navy-ai"
+  },
+  {
+    "id": "navy-sw-dev",
+    "name": "S/W개발병",
+    "branch": "해군",
+    "character": "navy-sw-dev"
+  },
+  {
+    "id": "navy-science-lab",
+    "name": "해군과학기술연구병",
+    "branch": "해군",
+    "character": "navy-science-lab"
+  },
+  {
+    "id": "navy-bigdata",
+    "name": "빅데이터분석병",
+    "branch": "해군",
+    "character": "navy-bigdata"
+  },
+  {
+    "id": "navy-special-medic",
+    "name": "전문의무병",
+    "branch": "해군",
+    "character": "navy-special-medic"
+  },
+  {
+    "id": "navy-media",
+    "name": "미디어병",
+    "branch": "해군",
+    "character": "navy-media"
+  },
+  {
+    "id": "navy-hygiene",
+    "name": "위생관리병",
+    "branch": "해군",
+    "character": "navy-hygiene"
+  },
+  {
+    "id": "navy-drone",
+    "name": "드론운용정비병",
+    "branch": "해군",
+    "character": "navy-drone"
+  },
+  {
+    "id": "navy-medic",
+    "name": "의무병",
+    "branch": "해군",
+    "character": "navy-medic"
+  },
+  {
+    "id": "marine-infantry",
+    "name": "보병",
+    "branch": "해병대",
+    "character": "marine-infantry"
+  },
+  {
+    "id": "marine-recon",
+    "name": "수색병",
+    "branch": "해병대",
+    "character": "marine-recon"
+  },
+  {
+    "id": "marine-artillery",
+    "name": "포병",
+    "branch": "해병대",
+    "character": "marine-artillery"
+  },
+  {
+    "id": "marine-mp",
+    "name": "군사경찰",
+    "branch": "해병대",
+    "character": "marine-mp"
+  },
+  {
+    "id": "marine-engineer",
+    "name": "공병",
+    "branch": "해병대",
+    "character": "marine-engineer"
+  },
+  {
+    "id": "marine-signals",
+    "name": "정보통신병",
+    "branch": "해병대",
+    "character": "marine-signals"
+  },
+  {
+    "id": "marine-cbrn",
+    "name": "화학병",
+    "branch": "해병대",
+    "character": "marine-cbrn"
+  },
+  {
+    "id": "marine-band",
+    "name": "군악병",
+    "branch": "해병대",
+    "character": "marine-band"
+  },
+  {
+    "id": "marine-linguist",
+    "name": "어학병",
+    "branch": "해병대",
+    "character": "marine-linguist"
+  },
+  {
+    "id": "marine-honor-guard",
+    "name": "의장병",
+    "branch": "해병대",
+    "character": "marine-honor-guard"
+  },
+  {
+    "id": "marine-drone",
+    "name": "드론운용병",
+    "branch": "해병대",
+    "character": "marine-drone"
+  },
+  {
+    "id": "marine-contents",
+    "name": "콘텐츠운용병",
+    "branch": "해병대",
+    "character": "marine-contents"
+  },
+  {
+    "id": "airforce-weather",
+    "name": "기상관측병",
+    "branch": "공군",
+    "character": "airforce-weather"
+  },
+  {
+    "id": "airforce-mp",
+    "name": "군사경찰",
+    "branch": "공군",
+    "character": "airforce-mp"
+  },
+  {
+    "id": "airforce-control",
+    "name": "운항관제병",
+    "branch": "공군",
+    "character": "airforce-control"
+  },
+  {
+    "id": "airforce-firefighter",
+    "name": "소방병",
+    "branch": "공군",
+    "character": "airforce-firefighter"
+  },
+  {
+    "id": "airforce-control-tower",
+    "name": "항공관제병",
+    "branch": "공군",
+    "character": "airforce-control-tower"
+  },
+  {
+    "id": "airforce-control-radar",
+    "name": "항공통제병",
+    "branch": "공군",
+    "character": "airforce-control-radar"
+  },
+  {
+    "id": "airforce-linguist",
+    "name": "어학병",
+    "branch": "공군",
+    "character": "airforce-linguist"
+  },
+  {
+    "id": "airforce-medic",
+    "name": "항공의무병",
+    "branch": "공군",
+    "character": "airforce-medic"
+  },
+  {
+    "id": "airforce-band",
+    "name": "군악병",
+    "branch": "공군",
+    "character": "airforce-band"
+  },
+  {
+    "id": "airforce-honor-guard",
+    "name": "의장병",
+    "branch": "공군",
+    "character": "airforce-honor-guard"
+  },
+  {
+    "id": "airforce-ground-maintenance",
+    "name": "항공기지상장비정비",
+    "branch": "공군",
+    "character": "airforce-ground-maintenance"
+  },
+  {
+    "id": "airforce-airframe-maintenance",
+    "name": "항공기기체정비",
+    "branch": "공군",
+    "character": "airforce-airframe-maintenance"
+  },
+  {
+    "id": "airforce-engine-maintenance",
+    "name": "항공기기관정비",
+    "branch": "공군",
+    "character": "airforce-engine-maintenance"
+  },
+  {
+    "id": "airforce-production-maintenance",
+    "name": "항공기제작정비",
+    "branch": "공군",
+    "character": "airforce-production-maintenance"
+  },
+  {
+    "id": "airforce-mech-facility",
+    "name": "기계설비",
+    "branch": "공군",
+    "character": "airforce-mech-facility"
+  },
+  {
+    "id": "airforce-arresting-gear",
+    "name": "항공기초과저지",
+    "branch": "공군",
+    "character": "airforce-arresting-gear"
+  },
+  {
+    "id": "airforce-artillery",
+    "name": "대공포운용",
+    "branch": "공군",
+    "character": "airforce-artillery"
+  },
+  {
+    "id": "airforce-short-sam",
+    "name": "단거리유도무기운용",
+    "branch": "공군",
+    "character": "airforce-short-sam"
+  },
+  {
+    "id": "airforce-mid-sam",
+    "name": "중거리유도무기운용",
+    "branch": "공군",
+    "character": "airforce-mid-sam"
+  },
+  {
+    "id": "airforce-long-sam",
+    "name": "장거리유도무기운용",
+    "branch": "공군",
+    "character": "airforce-long-sam"
+  },
+  {
+    "id": "airforce-fuel-supply",
+    "name": "유류보급",
+    "branch": "공군",
+    "character": "airforce-fuel-supply"
+  },
+  {
+    "id": "airforce-transport",
+    "name": "항공운수",
+    "branch": "공군",
+    "character": "airforce-transport"
+  },
+  {
+    "id": "airforce-environment",
+    "name": "환경",
+    "branch": "공군",
+    "character": "airforce-environment"
+  },
+  {
+    "id": "airforce-finance",
+    "name": "재정",
+    "branch": "공군",
+    "character": "airforce-finance"
+  },
+  {
+    "id": "airforce-hr",
+    "name": "인사교육",
+    "branch": "공군",
+    "character": "airforce-hr"
+  },
+  {
+    "id": "airforce-info-ops",
+    "name": "항공정보운영",
+    "branch": "공군",
+    "character": "airforce-info-ops"
+  },
+  {
+    "id": "airforce-special-intel",
+    "name": "특수정보",
+    "branch": "공군",
+    "character": "airforce-special-intel"
+  },
+  {
+    "id": "airforce-special-driver",
+    "name": "특수차량운전",
+    "branch": "공군",
+    "character": "airforce-special-driver"
+  },
+  {
+    "id": "airforce-sam-driver",
+    "name": "방공포차량운전",
+    "branch": "공군",
+    "character": "airforce-sam-driver"
+  },
+  {
+    "id": "airforce-heavy-driver",
+    "name": "공병장비운전",
+    "branch": "공군",
+    "character": "airforce-heavy-driver"
+  },
+  {
+    "id": "airforce-armored-driver",
+    "name": "경장갑차운전",
+    "branch": "공군",
+    "character": "airforce-armored-driver"
+  },
+  {
+    "id": "airforce-vehicle-maintenance",
+    "name": "차량정비",
+    "branch": "공군",
+    "character": "airforce-vehicle-maintenance"
+  },
+  {
+    "id": "airforce-it",
+    "name": "사이버체계운용",
+    "branch": "공군",
+    "character": "airforce-it"
+  },
+  {
+    "id": "airforce-ops-signals",
+    "name": "작전통신체계운용",
+    "branch": "공군",
+    "character": "airforce-ops-signals"
+  },
+  {
+    "id": "airforce-infra-signals",
+    "name": "기반통신체계운용",
+    "branch": "공군",
+    "character": "airforce-infra-signals"
+  },
+  {
+    "id": "airforce-avionics",
+    "name": "항공전자장비정비",
+    "branch": "공군",
+    "character": "airforce-avionics"
+  },
+  {
+    "id": "airforce-hydraulic",
+    "name": "항공기유압전기정비",
+    "branch": "공군",
+    "character": "airforce-hydraulic"
+  },
+  {
+    "id": "airforce-weapons",
+    "name": "항공기무기정비",
+    "branch": "공군",
+    "character": "airforce-weapons"
+  },
+  {
+    "id": "airforce-ammo",
+    "name": "항공탄약정비",
+    "branch": "공군",
+    "character": "airforce-ammo"
+  },
+  {
+    "id": "airforce-sam-maintenance",
+    "name": "방공유도무기정비",
+    "branch": "공군",
+    "character": "airforce-sam-maintenance"
+  },
+  {
+    "id": "airforce-power-facility",
+    "name": "전력설비",
+    "branch": "공군",
+    "character": "airforce-power-facility"
+  },
+  {
+    "id": "airforce-cbrn",
+    "name": "화생방",
+    "branch": "공군",
+    "character": "airforce-cbrn"
+  },
+  {
+    "id": "airforce-logistics",
+    "name": "장비물자보급",
+    "branch": "공군",
+    "character": "airforce-logistics"
+  },
+  {
+    "id": "airforce-facility",
+    "name": "토목건축",
+    "branch": "공군",
+    "character": "airforce-facility"
+  },
+  {
+    "id": "common-medic",
+    "name": "의무병",
+    "branch": "공통",
+    "character": "common-medic"
+  },
+  {
+    "id": "common-signals",
+    "name": "정보통신병",
+    "branch": "공통",
+    "character": "common-signals"
+  },
+  {
+    "id": "common-cook",
+    "name": "조리병",
+    "branch": "공통",
+    "character": "common-cook"
+  },
+  {
+    "id": "common-driver",
+    "name": "차량운전병",
+    "branch": "공통",
+    "character": "common-driver"
+  }
+]
