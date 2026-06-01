@@ -328,7 +328,7 @@ p.subtitle {
   height: 90%;
   object-fit: contain;
   filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.5));
-  mix-blend-mode: color-burn; /* Blends nicely with the dark background */
+  mix-blend-mode: multiply; /* Removes white background perfectly on dark backgrounds */
   background: transparent;
   animation: float 3s ease-in-out infinite;
 }
