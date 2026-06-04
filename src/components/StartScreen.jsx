@@ -23,16 +23,16 @@ export default function StartScreen({ onStartTest, onViewEncyclopedia }) {
 
       <h1 style={{ fontSize: '3rem', marginBottom: '8px', lineHeight: '1.2' }}>찰떡군</h1>
       <p className="subtitle" style={{ fontSize: '1rem', color: '#cbd5e1', marginBottom: '32px' }}>
-        나만의 메이플 스타일 군사특기 매칭 성향 테스트
+        군사특기 매칭 성향 테스트
       </p>
 
-      <div className="avatar-container" style={{ width: '150px', height: '150px', marginBottom: '40px' }}>
+      <div style={{ width: '100%', maxWidth: '320px', height: '160px', margin: '0 auto 40px', display: 'flex', justifyContent: 'center', alignItems: 'center', position: 'relative' }}>
         <img 
-          src="/assets/characters/infantry.png" 
+          src="/assets/characters/trio.png" 
           alt="찰떡군 마스코트" 
-          className="avatar-image"
+          style={{ width: '100%', height: '100%', objectFit: 'contain', filter: 'drop-shadow(0 6px 16px rgba(0, 0, 0, 0.6))', animation: 'float 3s ease-in-out infinite' }}
           onError={(e) => {
-            e.target.src = "https://images.unsplash.com/photo-1607604276583-eef5d076aa5f?w=150&auto=format&fit=crop&q=60"; // fallback
+            e.target.src = "https://images.unsplash.com/photo-1607604276583-eef5d076aa5f?w=320&auto=format&fit=crop&q=60"; // fallback
           }}
         />
       </div>

@@ -107,13 +107,13 @@ export default function EncyclopediaScreen({ onBack }) {
             <span className={`badge ${getBranchBadgeClass(role.branch)}`} style={{ alignSelf: 'flex-start', marginBottom: '12px', fontSize: '0.65rem' }}>
               {role.branch}
             </span>
-            <div style={{ width: '60px', height: '60px', borderRadius: '50%', background: 'rgba(255,255,255,0.03)', display: 'flex', justifyContent: 'center', alignItems: 'center', marginBottom: '10px' }}>
+            <div style={{ width: '90px', height: '90px', borderRadius: '50%', background: 'rgba(255,255,255,0.03)', display: 'flex', justifyContent: 'center', alignItems: 'center', marginBottom: '10px' }}>
               <img 
                 src={`/assets/characters/${role.character}.png`} 
                 alt={role.name}
-                style={{ width: '85%', height: '85%', objectFit: 'contain', ...getAvatarStyle(role.character) }}
+                style={{ width: '90%', height: '90%', objectFit: 'contain', ...getAvatarStyle(role.character) }}
                 onError={(e) => {
-                  e.target.src = "https://images.unsplash.com/photo-1607604276583-eef5d076aa5f?w=60&auto=format&fit=crop&q=60";
+                  e.target.src = "https://images.unsplash.com/photo-1607604276583-eef5d076aa5f?w=90&auto=format&fit=crop&q=60";
                 }}
               />
             </div>
@@ -175,14 +175,14 @@ export default function EncyclopediaScreen({ onBack }) {
             </div>
 
             {/* Avatar details */}
-            <div className="avatar-container" style={{ width: '100px', height: '100px' }}>
+            <div className="avatar-container" style={{ width: '150px', height: '150px' }}>
               <img 
                 src={`/assets/characters/${selectedRole.character}.png`} 
                 alt={selectedRole.name} 
                 className="avatar-image"
                 style={getAvatarStyle(selectedRole.character)}
                 onError={(e) => {
-                  e.target.src = "https://images.unsplash.com/photo-1607604276583-eef5d076aa5f?w=100&auto=format&fit=crop&q=60";
+                  e.target.src = "https://images.unsplash.com/photo-1607604276583-eef5d076aa5f?w=150&auto=format&fit=crop&q=60";
                 }}
               />
             </div>
