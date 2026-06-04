@@ -175,14 +175,14 @@ export default function EncyclopediaScreen({ onBack }) {
             </div>
 
             {/* Avatar details */}
-            <div className="avatar-container" style={{ width: '150px', height: '150px' }}>
+            <div className="avatar-container" style={{ width: '250px', height: '250px' }}>
               <img 
                 src={`/assets/characters/${selectedRole.character}.png`} 
                 alt={selectedRole.name} 
                 className="avatar-image"
                 style={getAvatarStyle(selectedRole.character)}
                 onError={(e) => {
-                  e.target.src = "https://images.unsplash.com/photo-1607604276583-eef5d076aa5f?w=150&auto=format&fit=crop&q=60";
+                  e.target.src = "https://images.unsplash.com/photo-1607604276583-eef5d076aa5f?w=250&auto=format&fit=crop&q=60";
                 }}
               />
             </div>
