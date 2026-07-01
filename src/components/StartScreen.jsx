@@ -3,25 +3,7 @@ import React from 'react';
 export default function StartScreen({ onStartTest, onViewEncyclopedia }) {
   return (
     <div className="glass-panel" style={{ textAlign: 'center' }}>
-      <div style={{ marginBottom: '32px', marginTop: '16px' }}>
-        <span 
-          style={{
-            background: 'rgba(249, 115, 22, 0.15)',
-            color: '#f97316',
-            padding: '6px 16px',
-            borderRadius: '20px',
-            fontSize: '0.85rem',
-            fontWeight: '800',
-            letterSpacing: '1px',
-            textTransform: 'uppercase',
-            border: '1px solid rgba(249, 115, 22, 0.3)'
-          }}
-        >
-          병무청 공공데이터 융합 프로젝트
-        </span>
-      </div>
-
-      <h1 style={{ fontSize: '3rem', marginBottom: '8px', lineHeight: '1.2' }}>찰떡군</h1>
+      <h1 style={{ fontSize: '3rem', marginBottom: '8px', marginTop: '40px', lineHeight: '1.2' }}>찰떡군</h1>
       <p className="subtitle" style={{ fontSize: '1rem', color: '#cbd5e1', marginBottom: '32px' }}>
         군사특기 매칭 성향 테스트
       </p>
@@ -47,9 +29,9 @@ export default function StartScreen({ onStartTest, onViewEncyclopedia }) {
         borderRadius: '12px',
         border: '1px solid rgba(255, 255, 255, 0.05)'
       }}>
-        MBTI 성향, 전공학과, 개인 취미를 바탕으로<br/>
-        나에게 딱 맞는 군대 보직을 추천해 줍니다.<br/>
-        메이플스토리 아바타와 함께 나의 군 보직 찰떡 매칭을 찾아보세요!
+        입대를 앞두고 어떤 보직이 나에게 어울릴지 막막하신가요?<br/>
+        나의 MBTI, 전공, 취미를 분석해 딱 맞는 군사특기를 추천해 드립니다.<br/>
+        나에게 찰떡인 군 보직을 지금 바로 찾아보세요!
       </p>
 
       <div style={{ 
@@ -68,7 +50,7 @@ export default function StartScreen({ onStartTest, onViewEncyclopedia }) {
       }}>
         <span style={{ fontSize: '1rem', marginTop: '-2px' }}>💡</span>
         <span>
-          <strong>경진대회 활용안:</strong> 병무청 <strong>'병역진로설계 온라인 서비스'</strong> 참여 및 직업선호도검사 완료 시, <strong>모집병 지원 가산점</strong>을 받을 수 있습니다. 찰떡군으로 나의 요건을 사전 체크하고 연계해 보세요!
+          <strong>Tip:</strong> 병무청 <strong>'병역진로설계 온라인 서비스'</strong> 참여 및 직업선호도검사 완료 시, <strong>모집병 지원 가산점</strong>을 받을 수 있습니다. 찰떡군으로 나의 요건을 사전 체크하고 연계해 보세요!
         </span>
       </div>
 

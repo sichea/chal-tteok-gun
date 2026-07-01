@@ -27,6 +27,20 @@ export default function ResultScreen({ surveyData, onReset }) {
   const [loadingAi, setLoadingAi] = useState(false);
 
   useEffect(() => {
+    if (surveyData.isSharedView) {
+      const targetRole = militaryRoles.find(r => r.id === surveyData.sharedRoleId) || militaryRoles[0];
+      setRecommendations([{
+        ...targetRole,
+        score: 99,
+        eligibilityStatus: 'eligible',
+        eligibilityText: '🟢 지원 자격 분석 완료',
+        hasRequiredLicense: true,
+        hasPreferredLicense: true,
+        hasPreferredMajor: true
+      }]);
+      return;
+    }
+
     // 1. Calculate eligibility and matching score for each role
     const scores = militaryRoles.map(role => {
       // 1.1 Strict requirement check
@@ -182,6 +196,78 @@ export default function ResultScreen({ surveyData, onReset }) {
     }
   }, [activeRankIdx, recommendations, currentRole]);
 
+  const getFallbackAdvice = (role, userMajor) => {
+    const name = role.name || '';
+    const majorText = userMajor || '일반학과';
+    
+    if (name.includes('소총') || name.includes('보병')) {
+      return `🛡️ **[AI 찰떡 조교의 스페셜 가이드라인]**
+- 🌟 **입대 전 준비 팁**: 강인한 체력이 필수라구! 규칙적인 유산소 운동과 하체 근력 운동을 병행하면서 기본 체력을 기르는 것이 전장에 빠르게 적응하는 비결이야.
+- 📚 **복무 중 자기개발 요령**: 체력 검정 특급 전사에 도전해봐! 군 복무 중 취득할 수 있는 국방 e-러닝의 기초 인문학 및 리더십 과목을 수강해 학점을 미리 채우는 것도 좋은 선택지야.
+- 🎓 **전역 후 커리어 연계 방안**: 최일선에서 갈고닦은 극한의 인내심과 협동정신, 팀 리더십은 전역 후 복학이나 취업 준비 과정에서 어떤 험난한 고난도 이겨내는 강인한 정신적 스펙이 되어줄 거야!`;
+    }
+    if (name.includes('포병') || name.includes('포')) {
+      return `🛡️ **[AI 찰떡 조교의 스페셜 가이드라인]**
+- 🌟 **입대 전 준비 팁**: 대포와 자주포는 정밀한 계산과 팀워크가 핵심이야! 기초 수학이나 기계 구조에 대한 상식을 넓히고, 협동조합형 스포츠를 통해 조화력을 길러두자.
+- 📚 **복무 중 자기개발 요령**: 복잡한 장비를 다루는 만큼, 군에서 원격강좌로 기계 설비나 CAD 관련 교양 학점을 이수하고 포병 장비 정비 기술을 익혀보자!
+- 🎓 **전역 후 커리어 연계 방안**: 대형 장비 운용 및 기계 부품 정비 협업 경험은 기계, 물류, 중공업 분야의 현장 관리 직무에 지원할 때 강점이 될 수 있어!`;
+    }
+    if (name.includes('공병')) {
+      return `🛡️ **[AI 찰떡 조교의 스페셜 가이드라인]**
+- 🌟 **입대 전 준비 팁**: 토목, 건축 지식이나 DIY 공구 다루는 취미가 빛을 발한다구! 건설 관련 기초 자격증이나 설계 개념을 예습해보는 것을 강추해.
+- 📚 **복무 중 자기개발 요령**: 부대 내 시설물 정비와 교량 가설 경험을 포트폴리오로 정리해봐. 건축/토목 기사 필기시험을 군 e-러닝으로 대비하면 일석이조야!
+- 🎓 **전역 후 커리어 연계 방안**: 건설 현장 실무 및 공정 관리와 유사한 야전 시설 개척 경험은 전역 후 건설업계, 인프라 공기업 취업 시 실무형 인재로 가산점을 받는 치트키가 될 거야.`;
+    }
+    if (name.includes('경찰')) {
+      return `🛡️ **[AI 찰떡 조교의 스페셜 가이드라인]**
+- 🌟 **입대 전 준비 팁**: 투철한 준법정신과 헌신이 필요해! 태권도나 유도 같은 무도 단증을 따두면 우대받고 선발될 확률이 훨씬 높아진다구!
+- 📚 **복무 중 자기개발 요령**: 부대 질서 유지 임무 틈틈이 경비지도사 자격증이나 공인 행정학 강좌를 수강하며 경호/보안 이론을 탄탄히 다져봐.
+- 🎓 **전역 후 커리어 연계 방안**: 군사경찰 경력은 전역 후 경찰 공무원 특채 지원 자격이나 대기업 보안팀, 민간 경호 전문직으로 전직할 때 강력한 커리어로 인정받을 수 있어!`;
+    }
+    if (name.includes('화학') || name.includes('화생방')) {
+      return `🛡️ **[AI 찰떡 조교의 스페셜 가이드라인]**
+- 🌟 **입대 전 준비 팁**: 생명과학, 보건학, 화학 분야 전공 지식이 있다면 아주 유리해! 화생방 장비 지침과 기본 생화학 안전 상식을 가볍게 읽어보자.
+- 📚 **복무 중 자기개발 요령**: 제독 장비 및 화학 분석 장치를 다루며 위험물기능사나 가스기능사 필기 과목을 국방 배움터로 공부해 보는 걸 권장해.
+- 🎓 **전역 후 커리어 연계 방안**: 정밀한 제독 실무와 안전 관제 경험은 향후 환경 안전 엔지니어링, 제약 바이오 생산 관리, 화학 안전 보건 직무의 훌륭한 스펙이 된다구!`;
+    }
+    if (name.includes('행정') || name.includes('인사') || name.includes('재정')) {
+      return `🛡️ **[AI 찰떡 조교의 스페셜 가이드라인]**
+- 🌟 **입대 전 준비 팁**: 꼼꼼함이 생명이라구! 정보처리기능사나 컴퓨터활용능력(컴활), 워드프로세서 같은 사무 자격증을 미리 취득해 두면 행정병 선발에 큰 가산점이 돼.
+- 📚 **복무 중 자기개발 요령**: 일과 후 PC 사용이 가능한 사이버지식정보방에서 ERP 정보관리사나 전산회계 자격증을 공부해 취득하는 용사들이 많아!
+- 🎓 **전역 후 커리어 연계 방안**: 군 행정 시스템 문서 기안 및 인사 데이터 관리 경험은 일반 기업의 인사, 총무, 기획 부서 실무직무에 즉시 투입 가능한 경력직급 인재로 입증될 수 있어.`;
+    }
+    if (name.includes('전차') || name.includes('장갑차') || name.includes('기갑')) {
+      return `🛡️ **[AI 찰떡 조교의 스페셜 가이드라인]**
+- 🌟 **입대 전 준비 팁**: 대형 운전면허나 기계공학 전공을 우대한다구! 기계 정비나 대형 차량 조종에 관한 시뮬레이션 지식을 넓히는 것을 추천해.
+- 📚 **복무 중 자기개발 요령**: 전차 궤도와 엔진 정비 지식을 습득하고 기계정비기능사 자격증을 목표로 정비반 간부님들께 노하우를 배워보자!
+- 🎓 **전역 후 커리어 연계 방안**: 거대한 전술 차량을 통제하고 유지 보수한 경험은 중장비 제조업체, 중기 운송업, 완성차 정비 분야에서 독보적인 기계 실무 경력으로 평가받는다구!`;
+    }
+    if (name.includes('통신') || name.includes('신호') || name.includes('전산') || name.includes('소프트웨어') || name.includes('정보보호')) {
+      return `🛡️ **[AI 찰떡 조교의 스페셜 가이드라인]**
+- 🌟 **입대 전 준비 팁**: 프로그래밍이나 네트워크 기초(CCNA 등)를 예습하자! 리눅스 마스터나 정보보안기능사 공부를 해두면 특기 적응이 훨씬 수월할 거야.
+- 📚 **복무 중 자기개발 요령**: 군 내 인트라넷 보안 관제나 서버 유지보수 경험을 바탕으로 무선설비기능사 자격증에 도전하고, 틈틈이 알고리즘 문제 풀이를 병행해 봐!
+- 🎓 **전역 후 커리어 연계 방안**: 실제 서버 인프라 및 네트워크 시스템을 실시간 모니터링하고 트러블 슈팅한 실전 엔지니어링 경력은 IT 대기업 시스템 운영(SysOps) 직무의 핵심 스펙이 될 거야!`;
+    }
+    if (name.includes('조리') || name.includes('취사')) {
+      return `🛡️ **[AI 찰떡 조교의 스페셜 가이드라인]**
+- 🌟 **입대 전 준비 팁**: 위생 상식과 대량 조리 레시피에 친숙해지자! 한식/양식 조리기능사 필기 합격이나 조리 기초 숙달이 큰 보탬이 될 거야.
+- 📚 **복무 중 자기개발 요령**: 매일 수백 명의 식단을 조율하며 시간 관리 및 자재 수급 감각을 익히고, 위생사 자격증 또는 추가 조리 기능사 시험을 준비해 봐.
+- 🎓 **전역 후 커리어 연계 방안**: 대규모 단체 급식 실무와 식자재 물류 관리 경험은 F&B 외식 프랜차이즈 메뉴 개발팀, 대기업 푸드서비스 영양사/조리사 취업 시 압도적인 실전 경력으로 인정받아!`;
+    }
+    if (name.includes('의무') || name.includes('간호')) {
+      return `🛡️ **[AI 찰떡 조교의 스페셜 가이드라인]**
+- 🌟 **입대 전 준비 팁**: 기본 응급처치(CPR) 요령이나 보건학 기초를 읽어두자! 간호조무사나 응급구조사 면허 취득을 준비 중이라면 우대받아 선발될 확률이 높아.
+- 📚 **복무 중 자기개발 요령**: 군의관님들을 도와 진료 보조 및 의약품 분류 실무를 배우고, 병원행정사나 산업위생관리 분야 자격증 필기 공부를 시도해 봐!
+- 🎓 **전역 후 커리어 연계 방안**: 군 병원 및 의무대에서의 임상 보조 및 응급구조 경험은 향후 보건의료계 복학 시 실습 적응력 향상은 물론, 민간 병원 행정직 및 구급대원 채용 시험에서 강력한 가점이 돼!`;
+    }
+    
+    // Default fallback
+    return `🛡️ **[AI 찰떡 조교의 스페셜 가이드라인]**
+- 🌟 **입대 전 준비 팁**: 용사님의 전공인 '${majorText}'과 관련된 기본 서적을 읽고, ${role.preferredLicenses.length > 0 ? `우대 자격증인 [${role.preferredLicenses.join(', ')}]` : '관련 전공 실무 능력'}을 미리 준비해두면 보직 선발에 매우 유리하다구!
+- 📚 **복무 중 자기개발 요령**: 군 복무 중 군 학점 이수 제도를 활용하여 전공 학점을 취득하고, 일과 후 개인 정비 시간을 활용해 전공 지식을 탄탄한 포트폴리오로 쌓아보자!
+- 🎓 **전역 후 커리어 연계 방안**: '${role.name}' 보직에서의 실무 경험은 전역 후 복학했을 때 학업 연계는 물론, 취업이나 창업 시 해당 분야의 실무 경력(IT, 기술, 조리 등) 스펙으로 찰떡같이 인정받아 강력한 무기가 될 거야! 용사님의 앞날을 응원한다구!`;
+  };
+
   const fetchAiAdvice = async (role) => {
     if (!role) return;
     setLoadingAi(true);
@@ -191,10 +277,7 @@ export default function ResultScreen({ surveyData, onReset }) {
     const apiKey = import.meta.env.VITE_GEMINI_API_KEY || '';
     if (!apiKey) {
       setTimeout(() => {
-        setAiAdvice(`🛡️ **[AI 찰떡 조교의 스페셜 가이드라인]**
-- 🌟 **입대 전 준비 팁**: 용사님의 전공인 '${major}'과 관련된 기본 서적을 읽고, ${role.preferredLicenses.length > 0 ? `우대 자격증인 [${role.preferredLicenses.join(', ')}]` : '관련 전공 실무 능력'}을 미리 준비해두면 보직 선발에 매우 유리하다구!
-- 📚 **복무 중 자기개발 요령**: 군 복무 중 군 학점 이수 제도를 활용하여 전공 학점을 취득하고, 일과 후 개인 정비 시간을 활용해 전공 지식을 탄탄한 포트폴리오로 쌓아보자!
-- 🎓 **전역 후 커리어 연계 방안**: '${role.name}' 보직에서의 실무 경험은 전역 후 복학했을 때 학업 연계는 물론, 취업이나 창업 시 해당 분야의 실무 경력(IT, 기술, 조리 등) 스펙으로 찰떡같이 인정받아 강력한 무기가 될 거야! 용사님의 앞날을 응원한다구!`);
+        setAiAdvice(getFallbackAdvice(role, major));
         setLoadingAi(false);
       }, 800);
       return;
@@ -228,10 +311,7 @@ export default function ResultScreen({ surveyData, onReset }) {
       setAiAdvice(responseText || '피드백 로드에 실패했다구. 다시 시도해줘!');
     } catch (err) {
       console.error("Gemini AI API Call Failed:", err);
-      setAiAdvice(`🛡️ **[AI 찰떡 조교의 스페셜 가이드라인]**
-- 🌟 **입대 전 준비 팁**: 용사님의 전공인 '${major}'과 관련된 기본 서적을 읽고, ${role.preferredLicenses.length > 0 ? `우대 자격증인 [${role.preferredLicenses.join(', ')}]` : '관련 전공 실무 능력'}을 미리 준비해두면 보직 선발에 매우 유리하다구!
-- 📚 **복무 중 자기개발 요령**: 군 복무 중 군 학점 이수 제도를 활용하여 전공 학점을 취득하고, 일과 후 개인 정비 시간을 활용해 전공 지식을 탄탄한 포트폴리오로 쌓아보자!
-- 🎓 **전역 후 커리어 연계 방안**: '${role.name}' 보직에서의 실무 경험은 전역 후 복학했을 때 학업 연계는 물론, 취업이나 창업 시 해당 분야의 실무 경력(IT, 기술, 조리 등) 스펙으로 찰떡같이 인정받아 강력한 무기가 될 거야! 용사님의 앞날을 응원한다구!`);
+      setAiAdvice(getFallbackAdvice(role, major));
     } finally {
       setLoadingAi(false);
     }
@@ -297,7 +377,7 @@ export default function ResultScreen({ surveyData, onReset }) {
   // Share result url
   const handleShare = async () => {
     const shareText = `[찰떡군] ${nickname}님의 최적 군사특기는 ${currentRole.name}(매칭률 ${currentRole.score}%)입니다! 지금 나에게 찰떡인 군 보직을 테스트해보세요.`;
-    const shareUrl = window.location.origin;
+    const shareUrl = `${window.location.origin}?role=${currentRole.id}&name=${encodeURIComponent(nickname)}`;
 
     if (navigator.share) {
       try {
@@ -376,7 +456,7 @@ export default function ResultScreen({ surveyData, onReset }) {
       </div>
 
       {/* Character Result Card (Capture Target) */}
-      <div className="result-card capture-target" style={{ border: '2.5px solid var(--color-primary)', background: 'rgba(30, 27, 75, 0.5)', padding: '24px' }}>
+      <div className="result-card capture-target" style={{ border: '2.5px solid var(--color-primary)', background: 'rgba(30, 27, 75, 0.5)', padding: '24px', borderRadius: '16px', marginBottom: '20px' }}>
         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '16px' }}>
           <span className={`badge ${getBranchBadgeClass(currentRole.branch)}`}>
             {currentRole.branch === '공통' ? '전군공통' : currentRole.branch}
@@ -461,7 +541,6 @@ export default function ResultScreen({ surveyData, onReset }) {
           background: 'rgba(15, 23, 42, 0.6)', 
           borderRadius: '12px', 
           padding: '16px', 
-          marginBottom: '20px', 
           border: '1.5px solid var(--color-glass-border)'
         }}>
           <h4 style={{ fontSize: '0.9rem', fontWeight: '800', color: 'white', marginBottom: '8px', display: 'flex', alignItems: 'center', gap: '6px' }}>
@@ -492,85 +571,85 @@ export default function ResultScreen({ surveyData, onReset }) {
             </div>
           )}
         </div>
+      </div>
 
-        {/* AI Counselling Box */}
-        <div style={{
-          background: 'rgba(249, 115, 22, 0.08)',
-          border: '1.5px solid rgba(249, 115, 22, 0.3)',
-          borderRadius: '12px',
-          padding: '16px',
-          marginBottom: '20px',
-          textAlign: 'left'
-        }}>
-          <h4 style={{ fontSize: '0.92rem', fontWeight: '900', color: 'var(--color-primary)', marginBottom: '10px', display: 'flex', alignItems: 'center', gap: '6px' }}>
-            <span style={{ fontSize: '1.1rem' }}>🤖</span>
-            찰떡 AI 커리어 컨설팅 (AI 조교 피드백)
-          </h4>
-          {loadingAi ? (
-            <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', padding: '12px 0', gap: '8px' }}>
-              <div className="spinner" style={{
-                width: '24px',
-                height: '24px',
-                border: '3px solid rgba(255,255,255,0.1)',
-                borderTop: '3px solid var(--color-primary)',
-                borderRadius: '50%',
-                animation: 'spin 1s linear infinite'
-              }} />
-              <p style={{ fontSize: '0.78rem', color: 'var(--color-text-sub)' }}>찰떡 조교가 맞춤형 로드맵을 작성하는 중이라구...</p>
-            </div>
-          ) : (
-            <div style={{ fontSize: '0.8rem', color: 'var(--color-text-main)', lineHeight: '1.6', whiteSpace: 'pre-wrap' }}>
-              {aiAdvice}
-            </div>
-          )}
-        </div>
+      {/* AI Counselling Box (Outside of capture-target) */}
+      <div style={{
+        background: 'rgba(249, 115, 22, 0.08)',
+        border: '1.5px solid rgba(249, 115, 22, 0.3)',
+        borderRadius: '12px',
+        padding: '16px',
+        marginBottom: '20px',
+        textAlign: 'left'
+      }}>
+        <h4 style={{ fontSize: '0.92rem', fontWeight: '900', color: 'var(--color-primary)', marginBottom: '10px', display: 'flex', alignItems: 'center', gap: '6px' }}>
+          <span style={{ fontSize: '1.1rem' }}>🤖</span>
+          찰떡 AI 커리어 컨설팅 (AI 조교 피드백)
+        </h4>
+        {loadingAi ? (
+          <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', padding: '12px 0', gap: '8px' }}>
+            <div className="spinner" style={{
+              width: '24px',
+              height: '24px',
+              border: '3px solid rgba(255,255,255,0.1)',
+              borderTop: '3px solid var(--color-primary)',
+              borderRadius: '50%',
+              animation: 'spin 1s linear infinite'
+            }} />
+            <p style={{ fontSize: '0.78rem', color: 'var(--color-text-sub)' }}>찰떡 조교가 맞춤형 로드맵을 작성하는 중이라구...</p>
+          </div>
+        ) : (
+          <div style={{ fontSize: '0.8rem', color: 'var(--color-text-main)', lineHeight: '1.6', whiteSpace: 'pre-wrap' }}>
+            {aiAdvice ? aiAdvice.replace(/\*\*/g, '') : ''}
+          </div>
+        )}
+      </div>
 
-        {/* MMA Data Details */}
-        <div style={{ background: 'rgba(15, 23, 42, 0.4)', borderRadius: '12px', padding: '16px', border: '1px solid var(--color-glass-border)' }}>
-          <h4 style={{ fontSize: '0.9rem', fontWeight: '800', color: 'white', marginBottom: '8px', display: 'flex', alignItems: 'center', gap: '6px' }}>
-            <span style={{ width: '4px', height: '12px', background: 'var(--color-secondary)', display: 'inline-block', borderRadius: '2px' }} />
-            보직 요약 정보 (공공데이터)
-          </h4>
-          <p style={{ fontSize: '0.82rem', color: 'var(--color-text-sub)', marginBottom: '14px', lineHeight: '1.5' }}>
-            {currentRole.summary}
-          </p>
+      {/* MMA Data Details (Outside of capture-target) */}
+      <div style={{ background: 'rgba(15, 23, 42, 0.4)', borderRadius: '12px', padding: '16px', border: '1px solid var(--color-glass-border)', marginBottom: '20px' }}>
+        <h4 style={{ fontSize: '0.9rem', fontWeight: '800', color: 'white', marginBottom: '8px', display: 'flex', alignItems: 'center', gap: '6px' }}>
+          <span style={{ width: '4px', height: '12px', background: 'var(--color-secondary)', display: 'inline-block', borderRadius: '2px' }} />
+          보직 요약 정보 (공공데이터)
+        </h4>
+        <p style={{ fontSize: '0.82rem', color: 'var(--color-text-sub)', marginBottom: '14px', lineHeight: '1.5' }}>
+          {currentRole.summary}
+        </p>
 
-          <h4 style={{ fontSize: '0.9rem', fontWeight: '800', color: 'white', marginBottom: '8px', display: 'flex', alignItems: 'center', gap: '6px' }}>
-            <span style={{ width: '4px', height: '12px', background: 'var(--color-primary)', display: 'inline-block', borderRadius: '2px' }} />
-            공식 모집 및 지원 조건
-          </h4>
-          <p style={{ fontSize: '0.82rem', color: 'var(--color-text-sub)', marginBottom: '14px', lineHeight: '1.5' }}>
-            {currentRole.qualifications}
-          </p>
+        <h4 style={{ fontSize: '0.9rem', fontWeight: '800', color: 'white', marginBottom: '8px', display: 'flex', alignItems: 'center', gap: '6px' }}>
+          <span style={{ width: '4px', height: '12px', background: 'var(--color-primary)', display: 'inline-block', borderRadius: '2px' }} />
+          공식 모집 및 지원 조건
+        </h4>
+        <p style={{ fontSize: '0.82rem', color: 'var(--color-text-sub)', marginBottom: '14px', lineHeight: '1.5' }}>
+          {currentRole.qualifications}
+        </p>
 
-          <a 
-            href={currentRole.officialLink} 
-            target="_blank" 
-            rel="noopener noreferrer"
-            style={{
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              gap: '6px',
-              background: 'rgba(255, 255, 255, 0.05)',
-              border: '1px solid var(--color-glass-border)',
-              borderRadius: '8px',
-              padding: '10px 0',
-              color: 'var(--color-text-main)',
-              fontSize: '0.8rem',
-              fontWeight: '700',
-              textDecoration: 'none',
-              transition: 'var(--transition-smooth)'
-            }}
-            onMouseOver={(e) => { e.currentTarget.style.background = 'rgba(255, 255, 255, 0.15)' }}
-            onMouseOut={(e) => { e.currentTarget.style.background = 'rgba(255, 255, 255, 0.05)' }}
-          >
-            <span>병무청 공식 지원 자격요강 링크</span>
-            <svg style={{ width: '14px', height: '14px' }} fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
-            </svg>
-          </a>
-        </div>
+        <a 
+          href={currentRole.officialLink} 
+          target="_blank" 
+          rel="noopener noreferrer"
+          style={{
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            gap: '6px',
+            background: 'rgba(255, 255, 255, 0.05)',
+            border: '1px solid var(--color-glass-border)',
+            borderRadius: '8px',
+            padding: '10px 0',
+            color: 'var(--color-text-main)',
+            fontSize: '0.8rem',
+            fontWeight: '700',
+            textDecoration: 'none',
+            transition: 'var(--transition-smooth)'
+          }}
+          onMouseOver={(e) => { e.currentTarget.style.background = 'rgba(255, 255, 255, 0.15)' }}
+          onMouseOut={(e) => { e.currentTarget.style.background = 'rgba(255, 255, 255, 0.05)' }}
+        >
+          <span>병무청 공식 지원 자격요강 링크</span>
+          <svg style={{ width: '14px', height: '14px' }} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+          </svg>
+        </a>
       </div>
 
       {/* Share & Save Buttons */}
@@ -649,7 +728,7 @@ export default function ResultScreen({ surveyData, onReset }) {
       {/* Footer controls */}
       <div style={{ display: 'flex', gap: '12px', marginTop: '24px', position: 'relative', zIndex: 1 }}>
         <button className="btn-secondary" onClick={onReset}>
-          다시 테스트하기
+          {surveyData.isSharedView ? '나도 찰떡 보직 찾아보기' : '다시 테스트하기'}
         </button>
       </div>
 
