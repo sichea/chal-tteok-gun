@@ -374,6 +374,20 @@ export default function ResultScreen({ surveyData, onReset }) {
         });
         setLoadingLive(false);
       }, 500);
+  };
+
+  const getOfficialBranchLink = (role) => {
+    const branch = role.branch || '육군';
+    switch (branch) {
+      case '해군':
+        return 'https://www.mma.go.kr/contents.do?mc=mma0000537';
+      case '공군':
+        return 'https://www.mma.go.kr/contents.do?mc=mma0000541';
+      case '해병대':
+        return 'https://www.mma.go.kr/contents.do?mc=mma0000545';
+      case '육군':
+      default:
+        return 'https://www.mma.go.kr/contents.do?mc=mma0000386';
     }
   };
 
@@ -758,7 +772,7 @@ export default function ResultScreen({ surveyData, onReset }) {
         </p>
 
         <a 
-          href={currentRole.officialLink} 
+          href={getOfficialBranchLink(currentRole)} 
           target="_blank" 
           rel="noopener noreferrer"
           style={{
@@ -833,7 +847,7 @@ export default function ResultScreen({ surveyData, onReset }) {
           병무청에서 제공하는 <strong>'병역진로설계 온라인 서비스'</strong>에 신청하여 직업선호도검사와 맞춤 상담을 이수하면, 본인 적성에 최적화된 군사특기로 입영 지원 시 <strong>기술행정병 가산점 혜택(군특기추천자 가산점)</strong>을 부여받을 수 있습니다. 찰떡군 매칭 결과를 참고해 병무청 온라인 서비스로 이동하여 공식 추천을 신청해 보세요!
         </p>
         <a 
-          href="https://www.mma.go.kr" 
+          href="https://www.mma.go.kr/byjr/01/bYJRSchedule.do?mc=mma0003263" 
           target="_blank" 
           rel="noopener noreferrer"
           style={{
